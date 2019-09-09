@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="./js/handlebars-v4.2.0.js"></script>
+</head>
+
+<body>
+    <script type="text/x-handlebars-template" id="tbody-tr">
+        {{#each this}}
+          {{#each hobbies}}
+           <tr>
+            <!-- .name当前路径的上级路径 -->
+                 <td>{{../name}}的爱好：{{this}}</td> 
+           </tr>
+           {{/each}}
+        {{/each}}
+
+    </script>
+    <table border="1">
+    </table>
+</body>
+<script type="text/javascript">
+var houdun = [{
+        "name": "向前华",
+        "hobbies": ['唱个歌', '跳舞', "打球"]
+
+    },
+    {
+        "name": "礼貌",
+        "hobbies": ['大', '小', "号"],
+    }
+
+]
+
+var myTPL = Handlebars.compile($('#tbody-tr').html());
+
+$("table").html(myTPL(houdun));
+</script>
+
+</html>
